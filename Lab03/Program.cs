@@ -42,7 +42,10 @@
 
             // Cas vs. Convert: Crit Multiolier
             Console.WriteLine("\n----- Cast vs Convert: Crit Multiplier -----");
-
+            int critCast = (int)critMultiplier;
+            int critConvert = Convert.ToInt32(critMultiplier);
+            Console.WriteLine($"Crit Multiplier (int cast): {critCast}");
+            Console.WriteLine($"Crit Multiplier (Convert rounded): {critConvert}");
 
         }
     }
