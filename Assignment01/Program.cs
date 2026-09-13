@@ -37,6 +37,16 @@
             Console.WriteLine($"Stamina cast (truncates)  : {staminaTruncated}");
             Console.WriteLine($"Stamina Convert (rounds)  : {staminaRounded}");
             Console.WriteLine($"=====================");
+
+
+            Console.Write("Enter save name: ");
+            string saveName = Console.ReadLine();
+            Console.Write("Choose save slot (1-3): ");
+            bool slotOk = int.TryParse(Console.ReadLine(), out int slot);
+            if (slot < 1 || slot > 3)       
+            slotOk = false;    
+            Console.WriteLine($"Valid input: {slotOk}");
+            Console.WriteLine($"Slot: {slot}");
         }
     }
 }
