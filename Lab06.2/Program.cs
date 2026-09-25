@@ -27,7 +27,7 @@ namespace Lab06._2
             Console.WriteLine($"Attack: {attackPower}");
             Console.WriteLine("=========================");
             Console.WriteLine();
-
+ 
             string enemyName = "Dark Slime";
             char enemyRank = 'B';
             int enemyLevel = 10;
@@ -111,6 +111,45 @@ namespace Lab06._2
                 Console.WriteLine("You escaped from the battle!");
             }
 
+            Console.WriteLine("=========================");
+            if (validChoice && choice != 3 && choice >= 1 && choice <= 2)
+            {
+                if (enemyHP <= 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("You defeated the enemy!");
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("===== ENEMY TURN =====");
+                    Console.WriteLine("Dark Slime attacks you!");
+
+                    hp -= (int)enemyAttackPower;
+
+                    if (hp < 0)
+                    {
+                        hp = 0;
+                    }
+
+                    Console.WriteLine($"Damage received: {enemyAttackPower}");
+                    Console.WriteLine($"Your HP: {hp}");
+
+                    if (hp <= 0)
+                    {
+                        Console.WriteLine("You have been defeated!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You survived the attack!");
+                    }
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("===== BATTLE STATUS =====");
+            Console.WriteLine($"Player HP: {hp}");
+            Console.WriteLine($"Enemy HP: {enemyHP}");
             Console.WriteLine("=========================");
         }
     }
