@@ -9,76 +9,100 @@
             const double MaxBatch = 500;
             const string Material = "Iron";
 
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("     Welcome to the Forge");
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("=> Iron Smelting 0.25 / Salvage 0.30");
-            Console.WriteLine("=> Key 'S' for Smelt (Ore -> Ingot)");
-            Console.WriteLine("=> Key 'B' for Breakdown (Ingot -> Ore)");
+            Console.WriteLine("================================");
+            Console.WriteLine("          IRON WORKSHOP");
+            Console.WriteLine("================================");
             Console.WriteLine();
 
-            Console.Write("Choose Menu: ");
+            Console.WriteLine("[ S ]  Smelt Ore");
+            Console.WriteLine("[ B ]  Break Ingot");
+            Console.WriteLine();
 
-            bool menuOK = char.TryParse(Console.ReadLine(), out char menu);
+            Console.WriteLine($"Smelt Rate    : {SmeltRate:F2}");
+            Console.WriteLine($"Break Rate    : {SalvageRate:F2}");
+            Console.WriteLine($"Maximum Batch : {MaxBatch:F0}");
+            Console.WriteLine();
 
-            if (!menuOK)
+            Console.WriteLine("--------------------------------");
+
+            Console.Write("Select operation : ");
+
+            bool menuOK = char.TryParse(
+                Console.ReadLine(),
+                out char menu
+            );
+
+            if (menuOK)
             {
-                Console.WriteLine("error: menu");
+                menu = char.ToUpper(menu);
+            }
+
+            Console.Write("Enter quantity   : ");
+
+            bool amountOK = double.TryParse(
+                Console.ReadLine(),
+                out double amount
+            );
+
+            Console.WriteLine();
+            Console.WriteLine("--------------------------------");
+
+            if (!menuOK || (menu != 'S' && menu != 'B'))
+            {
+                Console.WriteLine("ERROR");
+                Console.WriteLine("Invalid operation.");
             }
             else
             {
-                menu = char.ToUpper(menu);
-
-                Console.Write("How much would you like: ");
-
-                bool amountOK = double.TryParse(
-                    Console.ReadLine(),
-                    out double amount
-                );
-
-                if (menu == 'S' || menu == 'B')
+                if (!amountOK || amount <= 0 || amount > MaxBatch)
                 {
-                    if (!amountOK || amount <= 0 || amount > MaxBatch)
-                    {
-                        if (!amountOK)
-                        {
-                            Console.WriteLine("error: amount (parse failed)");
-                        }
-                        else if (amount <= 0)
-                        {
-                            Console.WriteLine("error: amount (must be greater than 0)");
-                        }
-                        else
-                        {
-                            Console.WriteLine("error: amount (exceeds MaxBatch)");
-                        }
-                    }
-                    else if (menu == 'S')
-                    {
-                        double ingot = amount * SmeltRate;
+                    Console.WriteLine("ERROR");
 
-                        Console.WriteLine(
-                            $"=> {amount:F2} {Material} Ore = {ingot:F2} {Material} Ingot"
-                        );
-                    }
-                    else if (menu == 'B')
+                    if (!amountOK)
                     {
-                        double ore = amount / SalvageRate;
-
-                        Console.WriteLine(
-                            $"=> {amount:F2} {Material} Ingot = {ore:F2} {Material} Ore"
-                        );
+                        Console.WriteLine("Quantity must be a number.");
+                    }
+                    else if (amount <= 0)
+                    {
+                        Console.WriteLine("Quantity must be greater than 0.");
                     }
                     else
                     {
-                        Console.WriteLine("error: menu");
+                        Console.WriteLine(
+                            $"Quantity cannot exceed {MaxBatch:F0}."
+                        );
                     }
+                }
+                else if (menu == 'S')
+                {
+                    double ingot = amount * SmeltRate;
+
+                    Console.WriteLine("          FORGING RESULT");
+                    Console.WriteLine();
+                    Console.WriteLine($"{amount:F2} {Material} Ore");
+                    Console.WriteLine($"{ingot:F2} {Material} Ingot");
+                    Console.WriteLine();
+                    Console.WriteLine(">> Smelting completed!");
+                }
+                else if (menu == 'B')
+                {
+                    double ore = amount / SalvageRate;
+
+                    Console.WriteLine("        BREAKDOWN RESULT");
+                    Console.WriteLine();
+                    Console.WriteLine($"{amount:F2} {Material} Ingot");
+                    Console.WriteLine($"{ore:F2} {Material} Ore");
+                    Console.WriteLine();
+                    Console.WriteLine(">> Breakdown completed!");
                 }
                 else
                 {
-                    Console.WriteLine("error: menu");
+                    Console.WriteLine("ERROR");
+                    Console.WriteLine("Invalid operation.");
                 }
             }
+
+            Console.WriteLine("--------------------------------");
         }
     }
 }
