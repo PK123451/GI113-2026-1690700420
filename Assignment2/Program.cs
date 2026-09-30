@@ -1,4 +1,13 @@
-﻿namespace Assignment2
+﻿/*
+* Student ID : 1690700420
+* Name       : ภัทรชนนท์ กระแสสินธุ์
+* Section    : 129A
+* No.        : 23
+* Course     : GI113 Computer Programming (GI)
+*/
+
+
+namespace Assignment2
 {
     internal class Program
     {
