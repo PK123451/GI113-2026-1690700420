@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            const double SmeltRate = 0.2500;
+            const double SmeltRate = 0.2500;    //ทดลองaiช่วย
             const double SalvageRate = 0.3000;
             const double MaxBatch = 500;
             const string Material = "Iron";
