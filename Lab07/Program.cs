@@ -1,4 +1,12 @@
-﻿using System.Data;
+﻿/*
+* Student ID : 1690700420
+* Name       : ภัทรชนนท์ กระแสสินธุ์
+* Section    : 129A
+* No.        : 23
+* Course     : GI113 Computer Programming (GI)
+*/
+
+using System.Data;
 
 namespace Lab07
 {
@@ -17,7 +25,8 @@ namespace Lab07
             Console.WriteLine("2) Fire Magic");
             Console.WriteLine("3) Defend");
             Console.WriteLine("4) Run");
-            Console.Write("Choose (1-4): ");
+            Console.WriteLine("5) Ice Spear");
+            Console.Write("Choose (1-5): ");
             int.TryParse(Console.ReadLine(), out int command);
 
             switch (command)
@@ -34,6 +43,9 @@ namespace Lab07
                 case 4:
                     Console.WriteLine("Hero looks for a way out...");
                     break;
+                case 5:
+                    Console.WriteLine("Hero casts Ice Spear!");
+                    break;
                 default:
                     Console.WriteLine("Hero hesitates. Invalid command!");
                     break;
@@ -42,6 +54,7 @@ namespace Lab07
             {
                 1 => 12,
                 2 => 18,
+                5 => 15,
                 _ => 0
             };
             int damage = Math.Max(0, power - monsterDefense);
@@ -76,6 +89,7 @@ namespace Lab07
                     Console.WriteLine("Please type y or n.");
                     break;
             }
+
 
 
         }
