@@ -25,7 +25,7 @@ namespace Lab07
             Console.WriteLine("2) Fire Magic");
             Console.WriteLine("3) Defend");
             Console.WriteLine("4) Run");
-            Console.WriteLine("5) Ice Spear");
+            Console.WriteLine("5) Light Sword");
             Console.Write("Choose (1-5): ");
             int.TryParse(Console.ReadLine(), out int command);
 
@@ -47,14 +47,14 @@ namespace Lab07
                     Console.WriteLine("Hero casts Ice Spear!");
                     break;
                 default:
-                    Console.WriteLine("Hero hesitates. Invalid command!");
+                    Console.WriteLine("Hero swings the Light Sword!");
                     break;
             }
             int power = command switch
             {
                 1 => 12,
                 2 => 18,
-                5 => 15,
+                5 => 20,
                 _ => 0
             };
             int damage = Math.Max(0, power - monsterDefense);
